@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @license Copyright (c) 2003-2017, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see LICENSE.md or http://ckeditor.com/license
  */
@@ -174,6 +174,23 @@
 		onLoad: function() {
 			CKEDITOR.document.appendStyleSheet( this.path + 'skins/' + CKEDITOR.skinName + '/inlinetoolbar.css' );
 		},
+
+		/**
+		 * Create new inline toolbar
+		 *
+		 * @since 4.8
+		 * @class CKEDITOR.plugins.inlinetoolbar.create
+		 * @constructor Creates a class instance.
+		 */
+		create: function( params ) {
+			var toolbar = new CKEDITOR.ui.inlineToolbar();
+			if ( params && params.buttons ) {
+
+			}
+
+			return toolbar;
+		},
+
 		init: function() {
 			// Awful hack for overwriting prototypes of inilineToolbarView (#1142).
 			if ( pluginInit ) {
@@ -181,18 +198,6 @@
 			}
 			pluginInit = true;
 			CKEDITOR.ui.inlineToolbarView.prototype = CKEDITOR.tools.extend( {}, CKEDITOR.ui.balloonPanel.prototype );
-
-		/**
-		 * Facade for the native `dataTransfer`/`clipboadData` object to hide all differences
-		 * between browsers.
-		 *
-		 * @since 4.8
-		 * @class CKEDITOR.plugins.inlinetoolbar.create
-		 * @constructor Creates a class instance.
-		 */
-			CKEDITOR.plugins.inlinetoolbar.create = function() {
-
-			};
 
 			/**
 			 * Build inline toolbar DOM representation.
