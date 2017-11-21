@@ -175,7 +175,7 @@
 	 * @constructor Creates an inline toolbar context instance.
 	 * @since 4.8
 	 * @param {CKEDITOR.editor} editor The editor instance for which the toolbar is created.
-	 * @param {Object} options Options object passed in the {@link CKEDITOR.editor.plugins.inlinetoolbar#create} method.
+	 * @param {CKEDITOR.plugins.inlinetoolbar.contextDefinition} options A set of options, defining context behavior.
 	 */
 	function Context( editor, options ) {
 		/**
@@ -518,12 +518,14 @@
 		init: function( editor ) {
 
 			/**
-			 * Set of instance-specific public APIs exposed by Inline Toolbar plugin.
+			 * Set of instance-specific public APIs exposed by the [Inline Toolbar](https://ckeditor.com/cke4/addon/inlinetoolbar) plugin.
 			 *
-			 * @class CKEDITOR.editor.plugins.inlinetoolbar
+			 * The main purpose is to {@link #create create} new toolbar contexts.
+			 *
+			 * @class CKEDITOR.editor.inlineToolbar
 	 		 * @singleton
 			 */
-			editor.plugins.inlinetoolbar = {
+			editor.inlineToolbar = {
 				/**
 				 * @private
 				 * @property {CKEDITOR.plugins.inlinetoolbar.contextManager} manager
@@ -535,7 +537,7 @@
 				 *
 				 * Following example will add a toolbar containing link/unlink buttons for any anchor or image:
 				 *
-				 *		editor.plugins.inlinetoolbar.create( {
+				 *		editor.inlinetoolbar.create( {
 				 *			buttons: 'Link,Unlink',
 				 *			cssSelector: 'a[href], img'
 				 *		} );
@@ -766,7 +768,7 @@
 	 * An example below will show the toolbar only for paths containing `<strong>` elements.
 	 *
 	 *		// Assuming that editor is an CKEDITOR.editor instance.
-	 *		editor.plugins.inlinetoolbar.create( {
+	 *		editor.inlinetoolbar.create( {
 	 *			buttons: 'Bold,Underline',
 	 *			refresh: function( editor, path ) {
 	 *				return path.contains( 'strong' );
